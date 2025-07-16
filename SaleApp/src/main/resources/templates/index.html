@@ -55,12 +55,13 @@
                 <td th:text="${p.price} + 'VNĐ'"></td>
                 <td>
                     <a th:href="@{'/products/'+${p.id}}"  class="btn btn-info">Cập nhật</a>
-                    <button class="btn btn-danger">Xóa</button>
+                    <button th:onclick="'deleteProduct(\'' + @{/api/products/} + ${p.id} + '\')'" class="btn btn-danger">Xóa</button>
                 </td>
             </tr>
         </table>
     </main>
 
     <div th:replace="base :: footer"></div>
+    <script th:src="@{/js/main.js}"></script>
 </body>
 </html>

@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ProductController {
     @Autowired
-    private ProductService ps; 
+    private ProductService ps;
+
     @GetMapping("/products")
     public String listProducts(Model model) {
         model.addAttribute("product", new Product());
@@ -35,9 +36,9 @@ public class ProductController {
         return "redirect:/";
     }
     
-    @PutMapping("/products/{productId}")
+    @GetMapping("/products/{productId}")
     public String updateProduct(Model model, @PathVariable (value = "productId") int id){
         model.addAttribute("product", this.ps.getProductById(id));
-        return "redirect:/";
+        return "products";
     }
 }
